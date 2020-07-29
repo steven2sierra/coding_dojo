@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+<div class="dash_container">
+    <div class="welcome">
+        <h1>Welcome {{user.first_name}}!</h1>
+        <a class="adjust" href="/logout">Logout</a>
+        <a class="adjust" href="/add_job">Add A Job</a>
+    </div>
+    <div class="job_table">
+        <table>
+            <tr>
+                <th>Job</th>
+                <th>Location</th>
+                <th>Action</th>
+            </tr>
+            {% for i in alljobs %}
+            {% if i  not in myjob %}
+            <tr>
+                <td>{{i.title}}</td>
+                <td>{{i.location}}</td>
+                <td>
+                    <a href="/view/{{i.id}}">View</a>
+                    <a href="/my_job/{{i.id}}">add</a>
+                    {% if i in poster_jobs %}
+                    <a href="/edit/{{i.id}}">edit</a>
+                    <a href="/cancel/{{i.id}}">cancel</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table> 
+    </div>
+    <div class="my_job_table">
+        <table>
+            <tr>
+                <th>My Jobs ...</th>
+            </tr>
+            {% for j in myjob %}
+            <tr>
+                {% if j in poster_jobs %}
+                <td>{{j.title}}</td>
+                <td><a href="/view/{{j.id}}">View</a></td>
+                <td><a href="/done/{{j.id}}">Done</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+</body>
+</html>

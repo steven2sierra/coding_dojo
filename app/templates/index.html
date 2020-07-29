@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div id ="container">
+        <div class="header">
+            <h1>Welcome to Handy Helper</h1>
+        </div>
+        <div class="register">
+            <h2>Register</h2>
+            <form action="/register" method="POST">
+                {% csrf_token %}
+                <p>First Name</p> <input type="text" name="first_name">
+                <p>Last Name</p> <input type="text" name="last_name">
+                <p>Email</p> <input type="text" name="email">
+                <p>Password</p> <input type="password" name="password">
+                <p>Confirm Password</p> <input type="password" name="confirm_pw">
+                <input type="submit" value="Register">
+            </form>
+        </div>
+        <div class="login">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                {% csrf_token %}
+                <p>Email</p> <input type="text" name="email">
+                <p>Password</p> <input type="password" name="password">
+                <input type="submit" value="Log In">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

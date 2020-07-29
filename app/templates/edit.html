@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h2>Edit Your Job Posting</h2>
+    <div>
+        <a href="/dashboard">Back</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div>
+        <form action="/edit/{{thejob.id}}/update" method="POST">
+            {% csrf_token %}
+            <p>Title</p> <input type="text" name="edit_title" value="{{thejob.title}}">
+            <p>Description</p> <input name="edit_description" value="{{thejob.desc}}">
+            <p>Location</p> <input type="text" name="edit_location" value="{{thejob.location}}">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

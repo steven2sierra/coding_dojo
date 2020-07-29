@@ -1,0 +1,99 @@
+#container {
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
+}
+
+.register {
+    display: inline-block;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+
+.login {
+    display: inline-block;
+    justify-content: space-between;
+    padding-left: 100px;
+    vertical-align: middle;
+}
+
+.welcome {
+    display: inline-flex;
+    margin-left: 20px;
+}
+
+a {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.adjust {
+    margin-top: 30px;
+}
+
+.job_table {
+    border: solid;
+    border-color: #06F8DC;
+    display: inline-block;
+    padding: 30px;
+    margin: 20px;
+}
+
+.my_job_table {
+    display: inline-block;
+    border: solid;
+    padding: 30px;
+    margin: 20px;
+    border-color: #06F8DC;
+}
+
+.dash_container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+.add_container  {
+    margin-left: 20px;
+    width: 200px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+.aOne {
+    position: absolute;
+    right: 0;
+    top: 25px;
+}
+
+.aTwo {
+    position: absolute;
+    right: 0;
+    top: 25px; 
+    margin-right:40px;
+}
+
+.adjustSubmit {
+    margin-top: 10px;
+}
+
+.descriptionOfJob {
+    border: solid;
+    display: block;
+    width: 200px;
+}
+
+.descriptionOfJob p {
+    margin-left: 5px;
+}

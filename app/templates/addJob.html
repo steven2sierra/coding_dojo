@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="moveRight">
+        <h3>Add a Job</h3>
+        <a class="aOne" href="/dashboard">Back</a>
+        <a class="aTwo" href="/logout">logout</a>
+    </div>
+    <div class="add_container">
+        <form action="/add_job/add" method="POST">
+            {% csrf_token %}
+            <p>Title</p> <input type="text" name="title">
+            <p>Description</p> <input type="text" name="description">
+            <p>Location</p> <input type="text" name="location">
+            <input class="adjustSubmit" type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
